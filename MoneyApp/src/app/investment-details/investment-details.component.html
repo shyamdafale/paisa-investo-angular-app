@@ -1,0 +1,22 @@
+<div class="container">
+        <div class="table-responsive-lg">
+        <h2>Investments Details</h2>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th>Investment Name</th>
+              <th>Investment Type</th>
+              <th>Investment Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let investment of investmentList">
+              <td>{{ investment.investmentName }}</td>
+              <td>{{ investment.investmentType }}</td>
+              <td>{{ investment.investmentAmount | currency:"₹ "}}</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
+      </div>
+      
