@@ -1,26 +1,26 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 import { AppSettings } from "../../../proxy.config";
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class InvestmentServiceService {
+  private baseUrl = "v1/add-investment";
+  private baseUrlList = "v1/show-investments";
 
-
-private baseUrl = 'v1/add-investment';
-private baseUrlList = 'v1/show-investments';
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   showInvestments(id: number): Observable<Object> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
   createInvestments(investment: Object): Observable<Object> {
-    debugger;
-    return this.http.post(`${AppSettings.FOLDER_ENDPOINT}/${this.baseUrl}`, investment);
+    return this.http.post(
+      `${AppSettings.FOLDER_ENDPOINT}/${this.baseUrl}`,
+      investment
+    );
   }
 
   updateInvestments(id: number, value: any): Observable<Object> {
@@ -28,11 +28,10 @@ private baseUrlList = 'v1/show-investments';
   }
 
   deleteInvestments(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: "text" });
   }
 
   getInvestmentsList(): Observable<any> {
-    debugger;
-    return this.http.get((`${AppSettings.FOLDER_ENDPOINT}/${this.baseUrlList}`));
+    return this.http.get(`${AppSettings.FOLDER_ENDPOINT}/${this.baseUrlList}`);
   }
 }
