@@ -11,6 +11,8 @@ import { InvestmentDetailsComponent } from './investment-details/investment-deta
 import { AddInvestmentComponent } from './add-investment/add-investment.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { AddIncomeComponent } from './add-income/add-income.component';
+import { IncomeDetailsComponent } from './income-details/income-details.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
     InvestmentDetailsComponent,
     AddInvestmentComponent,
     LoginFormComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    AddIncomeComponent,
+    IncomeDetailsComponent
   ],
   imports: [
     BrowserModule,

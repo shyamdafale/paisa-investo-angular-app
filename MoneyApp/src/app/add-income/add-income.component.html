@@ -1,0 +1,60 @@
+<div class="container">
+  <h1>Add Income Form</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="incomeName">Income Name</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="income.incomeName"
+        name="incomeName"
+        id="incomeName"
+        required
+      />
+    </div>
+
+    {{ income.incomeName }}
+    <!-- 
+      <div class="form-group">
+        <label for="investmentType">Investment Type</label>
+        <select class="form-control" id="investmentType" required>
+          <option *ngFor="let investment of investmentTypes" [value]="investment">{{investment}}</option>
+        </select>
+      </div> -->
+
+    <div class="form-group">
+      <label for="incomeType">Income Type</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="income.incomeType"
+        name="incomeType"
+        id="incomeType"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="incomeAmount">Income Amount</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="income.incomeAmount"
+        name="incomeAmount"
+        id="incomeAmount"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="incomeNote">Income Notes</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="income.incomeNote"
+        name="incomeNote"
+        id="incomeNote"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
