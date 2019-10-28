@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { InvestmentServiceService } from "../services/investment-service.service";
-import { InvestmentClass } from "../classes/investment-class";
 import { Router } from "@angular/router";
 import { Investment } from "../interfaces/investment";
 
@@ -11,6 +10,7 @@ import { Investment } from "../interfaces/investment";
 })
 export class InvestmentDetailsComponent implements OnInit {
   investmentList: Investment[] = [];
+  isListAvailable: boolean = true;
 
   constructor(
     private investmentService: InvestmentServiceService,
@@ -25,12 +25,17 @@ export class InvestmentDetailsComponent implements OnInit {
       data => {
         console.log(data);
         this.investmentList = data as Investment[];
-      },
-      error => console.log(error)
-    );
 
-    if (this.investmentList == null) {
-      console.log("Investment List is empty. Please add investment first.");
-    }
+        if (this.investmentList.length == 0) {
+          console.log("Investment List is empty. Please add investment first.");
+          this.isListAvailable = false;
+        }
+      },
+      error => {
+        console.log(error);
+        console.log("Investment List is empty. Error in fetching the list.");
+        this.isListAvailable = false;
+      }
+    );
   }
 }
