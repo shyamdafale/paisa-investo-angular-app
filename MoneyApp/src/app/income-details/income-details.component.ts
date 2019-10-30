@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 export class IncomeDetailsComponent implements OnInit {
   incomeList: Income[] = [];
   isListAvailable: boolean = true;
+  sumOfIncome: number = 0;
 
   constructor(private incomeService: IncomeService, private router: Router) {
     this.incomeService = incomeService;
@@ -50,10 +51,19 @@ export class IncomeDetailsComponent implements OnInit {
     this.router.navigate(["/add-income"]);
   }
 
+  getSumOfIncome(): number {
+    let sum = 0;
+    for (let i = 0; i < this.incomeList.length; i++) {
+      sum += Number(this.incomeList[i].incomeAmount);
+    }
+    return sum;
+  }
+
   checkIncomeListAvailability() {
     if (this.incomeList.length == 0) {
       console.log("Income List is empty. Please add income first.");
       this.isListAvailable = false;
     }
+    this.sumOfIncome = this.getSumOfIncome();
   }
 }

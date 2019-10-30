@@ -36,6 +36,17 @@
             </button>
           </td>
         </tr>
+        <tr *ngIf="isListAvailable" style="color:darkmagenta">
+          <td></td>
+          <td><b>Total Income:</b></td>
+          <td>
+            <b
+              ><i>{{ sumOfInvestment | currency: "₹ " }}</i></b
+            >
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
       </tbody>
     </table>
   </div>

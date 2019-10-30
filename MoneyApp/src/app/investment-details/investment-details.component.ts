@@ -11,6 +11,7 @@ import { Investment } from "../interfaces/investment";
 export class InvestmentDetailsComponent implements OnInit {
   investmentList: Investment[] = [];
   isListAvailable: boolean = true;
+  sumOfInvestment: number = 0;
 
   constructor(
     private investmentService: InvestmentServiceService,
@@ -53,6 +54,15 @@ export class InvestmentDetailsComponent implements OnInit {
       console.log("Investment List is empty. Please add investment first.");
       this.isListAvailable = false;
     }
+    this.sumOfInvestment = this.getSumOfInvestment();
+  }
+
+  getSumOfInvestment(): number {
+    let sum = 0;
+    for (let i = 0; i < this.investmentList.length; i++) {
+      sum += Number(this.investmentList[i].investmentAmount);
+    }
+    return sum;
   }
 
   updateInvestment(investment) {
