@@ -10,15 +10,10 @@
         <a class="nav-link" href="#">PaisaInvesto</a>
       </li>
       <li class="nav-item">
-        <a
-          class="nav-link"
-          routerLink="add-investment"
-          routerLinkActive="active"
-          >Add Investment</a
-        >
+        <a class="nav-link" (click)="newInvestment()">Add Investment</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="add-income">Add Income</a>
+        <a class="nav-link" (click)="newIncome()">Add Income</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="investment-details"

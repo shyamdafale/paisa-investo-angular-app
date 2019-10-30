@@ -22,11 +22,7 @@ export class IncomeDetailsComponent implements OnInit {
       data => {
         console.log(data);
         this.incomeList = data as Income[];
-
-        if (this.incomeList.length == 0) {
-          console.log("Income List is empty. Please add income first.");
-          this.isListAvailable = false;
-        }
+        this.checkIncomeListAvailability();
       },
       error => {
         console.log(error);
@@ -34,5 +30,30 @@ export class IncomeDetailsComponent implements OnInit {
         this.isListAvailable = false;
       }
     );
+  }
+
+  deleteIncome(income) {
+    this.incomeService.deleteIncome(income.incomeId).subscribe(
+      data => {
+        0;
+        this.incomeList.splice(this.incomeList.indexOf(income), 1);
+        this.checkIncomeListAvailability();
+      },
+      error => {
+        console.log("Error in deleting the income" + error);
+      }
+    );
+  }
+
+  updateIncome(income) {
+    this.incomeService.setter(income);
+    this.router.navigate(["/add-income"]);
+  }
+
+  checkIncomeListAvailability() {
+    if (this.incomeList.length == 0) {
+      console.log("Income List is empty. Please add income first.");
+      this.isListAvailable = false;
+    }
   }
 }

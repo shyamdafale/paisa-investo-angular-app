@@ -1,7 +1,6 @@
 export class InvestmentClass {
-  public id: number;
+  public investmentId: number;
   public investmentName: string;
   public investmentType: string;
   public investmentAmount: number;
-  
 }

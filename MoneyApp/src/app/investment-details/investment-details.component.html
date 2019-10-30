@@ -12,6 +12,7 @@
           <th>Investment Name</th>
           <th>Investment Type</th>
           <th>Investment Amount</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,21 @@
           <td>{{ investment.investmentName }}</td>
           <td>{{ investment.investmentType }}</td>
           <td>{{ investment.investmentAmount | currency: "₹ " }}</td>
+          <td>
+            <button
+              class="btn btn-info navbar-btn"
+              (click)="updateInvestment(investment)"
+            >
+              Update
+            </button>
+            &nbsp;
+            <button
+              class="btn btn-danger navbar-btn"
+              (click)="deleteInvestment(investment)"
+            >
+              Delete
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

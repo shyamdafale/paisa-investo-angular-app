@@ -1,5 +1,5 @@
 export class Income {
-  incomeId: string;
+  incomeId: number;
   incomeName: string;
   incomeType: string;
   incomeAmount: number;

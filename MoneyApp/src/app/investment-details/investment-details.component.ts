@@ -25,11 +25,7 @@ export class InvestmentDetailsComponent implements OnInit {
       data => {
         console.log(data);
         this.investmentList = data as Investment[];
-
-        if (this.investmentList.length == 0) {
-          console.log("Investment List is empty. Please add investment first.");
-          this.isListAvailable = false;
-        }
+        this.checkIncomeListAvailability();
       },
       error => {
         console.log(error);
@@ -37,5 +33,30 @@ export class InvestmentDetailsComponent implements OnInit {
         this.isListAvailable = false;
       }
     );
+  }
+
+  deleteInvestment(investment) {
+    this.investmentService.deleteInvestment(investment.investmentId).subscribe(
+      data => {
+        0;
+        this.investmentList.splice(this.investmentList.indexOf(investment), 1);
+        this.checkIncomeListAvailability();
+      },
+      error => {
+        console.log("Error in deleting the investment" + error);
+      }
+    );
+  }
+
+  checkIncomeListAvailability() {
+    if (this.investmentList.length == 0) {
+      console.log("Investment List is empty. Please add investment first.");
+      this.isListAvailable = false;
+    }
+  }
+
+  updateInvestment(investment) {
+    this.investmentService.setter(investment);
+    this.router.navigate(["/add-investment"]);
   }
 }

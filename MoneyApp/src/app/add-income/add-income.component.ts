@@ -10,13 +10,18 @@ import { IncomeService } from "../services/income.service";
 })
 export class AddIncomeComponent implements OnInit {
   income: Income = new Income();
-  submitted = true;
+  submitted = false;
 
   constructor(private incomeService: IncomeService, private router: Router) {
     this.incomeService = incomeService;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.income = this.incomeService.getter();
+    if (this.income === undefined) {
+      this.income = new Income();
+    }
+  }
 
   newIncomes(): void {
     this.submitted = false;
@@ -34,8 +39,23 @@ export class AddIncomeComponent implements OnInit {
     }
   }
 
+  update() {
+    this.incomeService
+      .updateIncome(this.income.incomeId, this.income)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.income = new Income();
+
+    if (this.income != null) {
+      this.router.navigate(["/income-details"]);
+    }
+  }
+
   onSubmit() {
     this.submitted = true;
-    this.save();
+    if (this.income.incomeId == undefined) {
+      this.save();
+    } else {
+      this.update();
+    }
   }
 }

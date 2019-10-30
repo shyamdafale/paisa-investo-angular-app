@@ -13,6 +13,7 @@
           <th>Income Type</th>
           <th>Income Amount</th>
           <th>Income Notes</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,21 @@
           <td>{{ income.incomeType }}</td>
           <td>{{ income.incomeAmount | currency: "₹ " }}</td>
           <td>{{ income.incomeNote }}</td>
+          <td>
+            <button
+              class="btn btn-info navbar-btn"
+              (click)="updateIncome(income)"
+            >
+              Update
+            </button>
+            &nbsp;
+            <button
+              class="btn btn-danger navbar-btn"
+              (click)="deleteIncome(income)"
+            >
+              Delete
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
